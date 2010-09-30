@@ -1,0 +1,68 @@
+Aplicativo PHP de Exemplo OAuth - Apontador API
+===============================================
+
+Este aplicativo é um exemplo de como executar chamadas à API Apontador. Seu uso é livre (vide
+"Informação Legal" abaixo): você pode incluir partes ou a totalidade dele em seus aplicativos,
+modificando-o conforme sua necessidade
+
+
+AVISO IMPORTANTE !!!!
+---------------------
+
+O aplicatvo NÃO TEM QUALIDADE DE PRODUÇÃO (por exemplo, ele não sanitiza suas entradas, e o
+"cadastro" de usuários fica num banco SQLite no diretório da aplicação), e NÃO TEM ESSE OBJETIVO.
+
+A idéia é mostrar na prática como acessar as APIs do Apontador (particularmente as baseadas
+em OAuth), prototipando o que pode evoluir para se tornar uma biblioteca PHP mais completa.
+
+A parte específica de acesso às APIs está no arquivo ApontadorApiLib.php. Você pode copiá-lo
+para sua própria aplicação (leve junto o ApontadorApiConfig.php e o OAuth.php[*]).
+
+[*] O OAuth.php é a biblioteca PHP em http://code.google.com/p/oauth/, em torno da qual o
+    ApontadorApiLib.php foi criado, copiado aqui nos termos da licença Apache 2.0.
+
+
+Instruções
+----------
+
+O pré-requisito para testar o aplicativo é ter um servidor (pode ser local) que rode PHP
+e suporte as bibliotecas SQLite (http://php.net/manual/en/book.sqlite.php). Um Apache tradicional,
+MAMP ou equivalente deve funcionar.
+
+1) Cadastre o aplicativo no Apontador. No campo "Endereço (URL) que recebe os tokens OAuth",
+   coloque o endereço no seu servidor onde ficará o arquivo "callback.php" do aplicativo. ex.:
+   http://meuservidor.com/exemplo/callback.php
+
+2) Insira este endereço, o consumer key/secret gerados e o seu e-mail no arquivo
+   ApontadorApiConfig.php.
+   
+3) Certifique-se de que a aplicação pode escrever no seu próprio diretório (por
+   conta do banco SQLite)
+      
+      
+Arquivos
+--------
+
+index.php      - Ponto de entrada (formulário de cadastro/login)
+principal.php  - Tela principal (disponibiliza ações, executa e mostra seu resultado)
+
+cadastrologinaction.php - Executa o cadastro ou login
+db.php                  - Funções de banco de dados
+
+
+Informação Legal
+----------------
+
+Copyright 2010 Carlos Duarte do Nascimento (Chester)
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
