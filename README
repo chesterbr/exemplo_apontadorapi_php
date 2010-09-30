@@ -3,23 +3,20 @@ Aplicativo PHP de Exemplo OAuth - Apontador API
 
 Este aplicativo é um exemplo de como executar chamadas à API Apontador. Seu uso é livre (vide
 "Informação Legal" abaixo): você pode incluir partes ou a totalidade dele em seus aplicativos,
-modificando-o conforme sua necessidade
+modificando-o conforme sua necessidade.
 
 
-AVISO IMPORTANTE !!!!
----------------------
+AVISO
+-----
 
-O aplicatvo NÃO TEM QUALIDADE DE PRODUÇÃO (por exemplo, ele não sanitiza suas entradas, e o
-"cadastro" de usuários fica num banco SQLite no diretório da aplicação), e NÃO TEM ESSE OBJETIVO.
+O objetivo não foi criar uma aplicação com qualidade de produção (por exemplo, ela não sanitiza
+suas entradas, e o "cadastro" de usuários fica num banco SQLite no diretório da aplicação).
 
 A idéia é mostrar na prática como acessar as APIs do Apontador (particularmente as baseadas
 em OAuth), prototipando o que pode evoluir para se tornar uma biblioteca PHP mais completa.
 
 A parte específica de acesso às APIs está no arquivo ApontadorApiLib.php. Você pode copiá-lo
-para sua própria aplicação (leve junto o ApontadorApiConfig.php e o OAuth.php[*]).
-
-[*] O OAuth.php é a biblioteca PHP em http://code.google.com/p/oauth/, em torno da qual o
-    ApontadorApiLib.php foi criado, copiado aqui nos termos da licença Apache 2.0.
+para sua própria aplicação (leve junto o ApontadorApiConfig.php e o OAuth.php).
 
 
 Instruções
@@ -38,16 +35,32 @@ MAMP ou equivalente deve funcionar.
    
 3) Certifique-se de que a aplicação pode escrever no seu próprio diretório (por
    conta do banco SQLite)
+
+
+Bugs Conhecidos
+---------------
+
+- A aplicação não trata o status 401 numa chamada - que pode acontecer se o acesso for revogado
+  pelo usuário. Ela deveria iniciar o processo de autorização.      
       
       
 Arquivos
 --------
 
-index.php      - Ponto de entrada (formulário de cadastro/login)
-principal.php  - Tela principal (disponibiliza ações, executa e mostra seu resultado)
+Front-End:
+  index.php      - Ponto de entrada (formulário de cadastro/login)
+  principal.php  - Tela principal (disponibiliza ações, executa e mostra seu resultado)
 
-cadastrologinaction.php - Executa o cadastro ou login
-db.php                  - Funções de banco de dados
+API:
+  ApontadorApiLib.php    - Funções de autorização e acesso à API
+  ApontadorApiConfig.php - Dados da sua aplicação
+  OAuth.php              - Biblioteca OAuth, vide http://code.google.com/p/oauth/
+
+
+Outros:
+  cadastrologinaction.php - Executa o cadastro ou login
+  db.php                  - Funções de banco de dados
+
 
 
 Informação Legal
